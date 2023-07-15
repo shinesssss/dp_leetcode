@@ -1,0 +1,23 @@
+class Solution {
+public:
+int uniq(int i,int j,vector<vector<int>>&dp){
+    if(i<0 || j<0){
+        return 0;
+    }
+    if(i==0 && j==0){
+        return 1;
+    }
+    if(dp[i][j]!=-1){
+        return dp[i][j];
+    }
+    int a=uniq(i-1,j,dp);
+    int b=uniq(i,j-1,dp);
+    return dp[i][j]=a+b;
+}
+    int uniquePaths(int m, int n) {
+        int i=m-1;
+        int j=n-1;
+        vector<vector<int>>dp(m,vector<int>(n,-1));
+        return uniq(i,j,dp);
+    }
+};
